@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retardtainment - 30M Views in 30 Days Through AI Automation</title>
+    <meta name="description" content="Turn your social media into a viral machine. High-ticket 1:1 coaching for creators ready to dominate with AI systems. 30 million views in the last 30 days.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --white: #FFFFFF;
+            --black: #0A0A0A;
+            --grey-dark: #1A1A1A;
+            --grey-mid: #2A2A2A;
+            --grey-light: #D4D4D4;
+            --accent: #FF0040;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Syne', sans-serif;
+            background: var(--white);
+            color: var(--black);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* CURSOR */
+        body {
+            cursor: none;
+        }
+
+        .custom-cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--black);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 10000;
+            transition: all 0.1s ease;
+            mix-blend-mode: difference;
+        }
+
+        .custom-cursor.hover {
+            width: 60px;
+            height: 60px;
+            border-color: var(--accent);
+            background: rgba(255, 0, 64, 0.1);
+        }
+
+        /* LOADING SEQUENCE */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--black);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeOut 0.8s ease 2s forwards;
+        }
+
+        .loading-text {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 15vw;
+            color: var(--white);
+            letter-spacing: -0.02em;
+            animation: glitch 0.3s infinite;
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                pointer-events: none;
+            }
+        }
+
+        @keyframes glitch {
+            0%, 100% { transform: translate(0); }
+            25% { transform: translate(-2px, 2px); }
+            50% { transform: translate(2px, -2px); }
+            75% { transform: translate(-2px, -2px); }
+        }
+
+        /* HERO SECTION */
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--white) 0%, #F5F5F5 100%);
+        }
+
+        .hero-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(var(--grey-light) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grey-light) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.3;
+            animation: gridScroll 20s linear infinite;
+        }
+
+        @keyframes gridScroll {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 1400px;
+            padding: 0 2rem;
+        }
+
+        .hero-eyebrow {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--black);
+            opacity: 0;
+            animation: slideUp 0.8s ease 2.2s forwards;
+            margin-bottom: 1rem;
+        }
+
+        .hero-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(4rem, 15vw, 12rem);
+            line-height: 0.9;
+            letter-spacing: -0.03em;
+            color: var(--black);
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: titleReveal 1.2s ease 2.4s forwards;
+        }
+
+        .hero-title .highlight {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--black), var(--grey-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+        }
+
+        .hero-title .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 0.1em;
+            left: 0;
+            width: 100%;
+            height: 0.15em;
+            background: var(--accent);
+            animation: underlineSlide 0.6s ease 3.2s forwards;
+            transform: scaleX(0);
+            transform-origin: left;
+        }
+
+        @keyframes underlineSlide {
+            to { transform: scaleX(1); }
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 2.5vw, 1.8rem);
+            font-weight: 500;
+            color: var(--grey-dark);
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            opacity: 0;
+            animation: slideUp 0.8s ease 2.8s forwards;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            margin-bottom: 3rem;
+            opacity: 0;
+            animation: slideUp 0.8s ease 3s forwards;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(3rem, 6vw, 5rem);
+            line-height: 1;
+            color: var(--black);
+            display: block;
+        }
+
+        .stat-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--grey-dark);
+            margin-top: 0.5rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.5rem 4rem;
+            background: var(--black);
+            color: var(--white);
+            font-family: 'Syne', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            opacity: 0;
+            animation: slideUp 0.8s ease 3.2s forwards;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--accent);
+            transition: left 0.3s ease;
+        }
+
+        .cta-button span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-button:hover::before {
+            left: 0;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes titleReveal {
+            from {
+                opacity: 0;
+                transform: translateY(50px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* PROOF SECTION */
+        .proof-section {
+            padding: 10rem 2rem;
+            background: var(--black);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .proof-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.05;
+            background-image: 
+                repeating-linear-gradient(0deg, var(--white) 0px, var(--white) 1px, transparent 1px, transparent 20px),
+                repeating-linear-gradient(90deg, var(--white) 0px, var(--white) 1px, transparent 1px, transparent 20px);
+        }
+
+        .proof-content {
+            position: relative;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(3rem, 10vw, 8rem);
+            line-height: 0.9;
+            letter-spacing: -0.02em;
+            margin-bottom: 4rem;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .section-title.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .proof-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-bottom: 6rem;
+        }
+
+        .proof-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 3rem;
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .proof-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .proof-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-10px);
+        }
+
+        .proof-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .proof-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+
+        .proof-description {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--grey-light);
+        }
+
+        .viral-showcase {
+            text-align: center;
+            margin-top: 6rem;
+        }
+
+        .viral-number {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(6rem, 20vw, 15rem);
+            line-height: 1;
+            background: linear-gradient(135deg, var(--white), var(--grey-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 1s ease;
+        }
+
+        .viral-number.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .viral-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--grey-light);
+        }
+
+        /* HOW IT WORKS */
+        .how-section {
+            padding: 10rem 2rem;
+            background: var(--white);
+            position: relative;
+        }
+
+        .how-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .process-grid {
+            display: grid;
+            gap: 4rem;
+            margin-top: 6rem;
+        }
+
+        .process-step {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: center;
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s ease;
+        }
+
+        .process-step:nth-child(even) {
+            grid-template-columns: 2fr 1fr;
+            transform: translateX(50px);
+        }
+
+        .process-step.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .process-number {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(8rem, 15vw, 12rem);
+            line-height: 1;
+            color: var(--black);
+            opacity: 0.1;
+        }
+
+        .process-step:nth-child(even) .process-number {
+            text-align: right;
+        }
+
+        .process-text h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--black);
+        }
+
+        .process-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--grey-dark);
+        }
+
+        /* OFFER SECTION */
+        .offer-section {
+            padding: 10rem 2rem;
+            background: linear-gradient(135deg, var(--grey-dark) 0%, var(--black) 100%);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .offer-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .offer-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(3.5rem, 10vw, 7rem);
+            line-height: 0.95;
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .offer-title.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .offer-subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.6rem);
+            font-weight: 500;
+            margin-bottom: 4rem;
+            color: var(--grey-light);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease 0.2s;
+        }
+
+        .offer-subtitle.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .offer-box {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            padding: 4rem;
+            margin-bottom: 4rem;
+            opacity: 0;
+            transform: scale(0.95);
+            transition: all 0.8s ease 0.4s;
+        }
+
+        .offer-box.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .offer-features {
+            text-align: left;
+            margin-bottom: 3rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .feature-item::before {
+            content: '→';
+            font-weight: 700;
+            margin-right: 1rem;
+            color: var(--accent);
+            font-size: 1.5rem;
+        }
+
+        .qualifier {
+            margin-top: 4rem;
+            padding-top: 4rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .qualifier h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .qualifier-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            text-align: left;
+            margin-top: 2rem;
+        }
+
+        .qualifier-list h4 {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .qualifier-list p {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--grey-light);
+            margin-bottom: 0.5rem;
+        }
+
+        /* CTA SECTION */
+        .cta-section {
+            padding: 12rem 2rem;
+            background: var(--white);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-headline {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(4rem, 12vw, 9rem);
+            line-height: 0.9;
+            margin-bottom: 2rem;
+            color: var(--black);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .cta-headline.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .cta-subtext {
+            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+            margin-bottom: 3rem;
+            color: var(--grey-dark);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease 0.2s;
+        }
+
+        .cta-subtext.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .cta-button-large {
+            display: inline-block;
+            padding: 2rem 5rem;
+            background: var(--black);
+            color: var(--white);
+            font-family: 'Syne', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .cta-button-large.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.8s ease 0.4s;
+        }
+
+        .cta-button-large::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--accent);
+            transition: left 0.4s ease;
+        }
+
+        .cta-button-large span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-button-large:hover::before {
+            left: 0;
+        }
+
+        .cta-button-large:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .urgency-text {
+            margin-top: 2rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--grey-dark);
+        }
+
+        /* FOOTER */
+        .footer {
+            padding: 6rem 2rem 3rem;
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-brand {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            line-height: 0.9;
+            margin-bottom: 1rem;
+        }
+
+        .footer-tagline {
+            font-size: 1.1rem;
+            color: var(--grey-light);
+            margin-bottom: 2rem;
+        }
+
+        .footer-contact {
+            text-align: right;
+        }
+
+        .footer-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--grey-light);
+            margin-bottom: 1rem;
+        }
+
+        .footer-email {
+            font-size: 1.1rem;
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-email:hover {
+            color: var(--accent);
+        }
+
+        .footer-social {
+            margin-top: 1.5rem;
+        }
+
+        .footer-social a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--grey-light);
+        }
+
+        /* MOBILE RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero-stats {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .proof-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process-step,
+            .process-step:nth-child(even) {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .process-number {
+                text-align: left !important;
+            }
+
+            .qualifier-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .footer-contact {
+                text-align: left;
+            }
+
+            .offer-box {
+                padding: 2rem;
+            }
+
+            .cta-button,
+            .cta-button-large {
+                padding: 1.2rem 2.5rem;
+                font-size: 0.95rem;
+            }
+
+            body {
+                cursor: auto;
+            }
+
+            .custom-cursor {
+                display: none;
+            }
+        }
+
+        /* SCROLL ANIMATIONS */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* NOISE TEXTURE */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 10001;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+    </style>
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div class="custom-cursor"></div>
+
+    <!-- Loading Screen -->
+    <div class="loading-screen">
+        <div class="loading-text">LOADING</div>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-grid"></div>
+        <div class="hero-content">
+            <div class="hero-eyebrow">@RETARDTAINMENT</div>
+            <h1 class="hero-title">
+                TURN ATTENTION<br>
+                INTO <span class="highlight">DOMINATION</span>
+            </h1>
+            <p class="hero-subtitle">
+                AI systems that generate millions of views while you sleep. 
+                No guessing. No grinding. Pure algorithmic precision.
+            </p>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number">30M+</span>
+                    <span class="stat-label">Views Last 30 Days</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">AI Automated</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">1:1</span>
+                    <span class="stat-label">Elite Coaching</span>
+                </div>
+            </div>
+            <a href="mailto:retardtainment.buisness@gmail.com" class="cta-button">
+                <span>Book Your Spot</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- PROOF SECTION -->
+    <section class="proof-section">
+        <div class="proof-bg"></div>
+        <div class="proof-content">
+            <h2 class="section-title fade-in">THE SYSTEM WORKS</h2>
+            
+            <div class="proof-grid">
+                <div class="proof-card fade-in">
+                    <span class="proof-icon">⚡</span>
+                    <h3 class="proof-title">Algorithmic Dominance</h3>
+                    <p class="proof-description">
+                        While others guess, we engineer. Every post is built on data-backed frameworks 
+                        that force the algorithm to amplify your content.
+                    </p>
+                </div>
+                
+                <div class="proof-card fade-in" style="transition-delay: 0.1s;">
+                    <span class="proof-icon">🤖</span>
+                    <h3 class="proof-title">AI-Powered Scale</h3>
+                    <p class="proof-description">
+                        Create content that would take teams weeks in minutes. 
+                        AI automation handles ideation, production, and optimization.
+                    </p>
+                </div>
+                
+                <div class="proof-card fade-in" style="transition-delay: 0.2s;">
+                    <span class="proof-icon">🎯</span>
+                    <h3 class="proof-title">Viral On Command</h3>
+                    <p class="proof-description">
+                        Virality isn't luck. It's engineered attention. 
+                        We've cracked the code. Now it's your turn.
+                    </p>
+                </div>
+            </div>
+
+            <div class="viral-showcase">
+                <div class="viral-number fade-in">30,000,000</div>
+                <div class="viral-label">Views Generated in 30 Days</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="how-section">
+        <div class="how-content">
+            <h2 class="section-title fade-in">HOW WE DOMINATE</h2>
+            
+            <div class="process-grid">
+                <div class="process-step fade-in">
+                    <div class="process-number">01</div>
+                    <div class="process-text">
+                        <h3>Reverse-Engineer Virality</h3>
+                        <p>
+                            We don't create content. We engineer attention machines. 
+                            Every viral post follows patterns. We teach you the blueprint 
+                            that forces algorithms to serve your content to millions.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="process-step fade-in">
+                    <div class="process-text">
+                        <h3>Deploy AI Systems</h3>
+                        <p>
+                            Stop trading time for content. Build AI workflows that ideate, 
+                            create, and optimize at scale. What took you 40 hours now takes 40 minutes.
+                        </p>
+                    </div>
+                    <div class="process-number">02</div>
+                </div>
+
+                <div class="process-step fade-in">
+                    <div class="process-number">03</div>
+                    <div class="process-text">
+                        <h3>Scale To Millions</h3>
+                        <p>
+                            With the system in place, growth becomes inevitable. 
+                            Consistent viral reach. Authority positioning. Monetization at scale. 
+                            This is the endgame.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OFFER SECTION -->
+    <section class="offer-section">
+        <div class="offer-content">
+            <h2 class="offer-title fade-in">1:1 ELITE COACHING</h2>
+            <p class="offer-subtitle fade-in">
+                For creators who refuse to stay invisible
+            </p>
+
+            <div class="offer-box fade-in">
+                <div class="offer-features">
+                    <div class="feature-item">Private 1:1 sessions teaching the exact AI systems generating 30M+ views</div>
+                    <div class="feature-item">Custom viral frameworks tailored to your niche and audience</div>
+                    <div class="feature-item">Complete AI automation workflows for content at scale</div>
+                    <div class="feature-item">Algorithmic understanding that turns every post into a weapon</div>
+                    <div class="feature-item">Direct access to proven systems, not theory</div>
+                </div>
+
+                <div class="qualifier">
+                    <h3>Who This Is For / Who This Isn't For</h3>
+                    <div class="qualifier-grid">
+                        <div class="qualifier-list">
+                            <h4>✓ This Is For You If:</h4>
+                            <p>You're ready to invest in real results</p>
+                            <p>You want to dominate, not participate</p>
+                            <p>You understand AI is the future</p>
+                            <p>You're willing to execute relentlessly</p>
+                            <p>You want millions of views, not thousands</p>
+                        </div>
+                        <div class="qualifier-list">
+                            <h4>✗ This Isn't For You If:</h4>
+                            <p>You're looking for shortcuts without work</p>
+                            <p>You want quick tips and tricks</p>
+                            <p>You're not serious about growth</p>
+                            <p>You want to keep doing what's not working</p>
+                            <p>You're afraid of technology</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <a href="mailto:retardtainment.buisness@gmail.com" class="cta-button-large fade-in">
+                <span>Apply For Coaching</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2 class="cta-headline fade-in">
+                STOP BEING<br>INVISIBLE
+            </h2>
+            <p class="cta-subtext fade-in">
+                Every day you wait, someone else builds the audience you deserve. 
+                The algorithm doesn't care about your potential. It rewards those who understand the game.
+            </p>
+            <a href="mailto:retardtainment.buisness@gmail.com" class="cta-button-large fade-in">
+                <span>Book Your Call Now</span>
+            </a>
+            <p class="urgency-text">Limited Spots Available — First Come, First Served</p>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand-section">
+                <div class="footer-brand">RETARDTAINMENT</div>
+                <div class="footer-tagline">
+                    Engineering viral attention through AI automation
+                </div>
+            </div>
+            <div class="footer-contact">
+                <div class="footer-label">Get In Touch</div>
+                <a href="mailto:retardtainment.buisness@gmail.com" class="footer-email">
+                    retardtainment.buisness@gmail.com
+                </a>
+                <div class="footer-social">
+                    <a href="https://instagram.com/Retardtainment" target="_blank">@Retardtainment</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            © 2026 Retardtainment. All Rights Reserved.
+        </div>
+    </footer>
+
+    <script>
+        // Custom Cursor
+        const cursor = document.querySelector('.custom-cursor');
+        const hoverElements = document.querySelectorAll('a, button, .proof-card');
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        hoverElements.forEach(el => {
+            el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+            el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+        });
+
+        // Scroll Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in, .section-title, .proof-card, .process-step, .viral-number, .offer-title, .offer-subtitle, .offer-box, .cta-headline, .cta-subtext, .cta-button-large').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Email CTA handling
+        const ctaButtons = document.querySelectorAll('.cta-button, .cta-button-large');
+        ctaButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.location.href = 'mailto:retardtainment.buisness@gmail.com?subject=1:1 Coaching Inquiry - Retardtainment&body=Hi, I\'m interested in learning more about your 1:1 coaching program for AI-powered viral content creation.';
+            });
+        });
+
+        // Parallax effect on hero grid
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const heroGrid = document.querySelector('.hero-grid');
+            if (heroGrid && scrolled < window.innerHeight) {
+                heroGrid.style.transform = `translate(${scrolled * 0.05}px, ${scrolled * 0.05}px)`;
+            }
+        });
+
+        // Number counter animation for viral showcase
+        const animateNumber = (element, target) => {
+            const duration = 2000;
+            const start = 0;
+            const increment = target / (duration / 16);
+            let current = start;
+
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                element.textContent = Math.floor(current).toLocaleString();
+            }, 16);
+        };
+
+        const viralNumber = document.querySelector('.viral-number');
+        const viralObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !entry.target.dataset.animated) {
+                    entry.target.dataset.animated = 'true';
+                    animateNumber(entry.target, 30000000);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        if (viralNumber) {
+            viralObserver.observe(viralNumber);
+        }
+    </script>
+</body>
+</html>
